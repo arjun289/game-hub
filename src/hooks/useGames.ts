@@ -1,13 +1,10 @@
 import { useQuery } from "@tanstack/react-query"; 
 import { GameQuery } from "../App";
-import apiClient from "../services/api-client";
 import { FetchResponse } from "../services/api-client"; 
+import { Platform } from "./usePlatform";
+import APIClient from "../services/api-client";
 
-export interface Platform {
-  id: number,
-  name: string,
-  slug: string
-}
+const apiClient = new APIClient<Game>('/games')
 
 export interface Game {
     id: number;
@@ -29,9 +26,8 @@ const useGames = (gameQuery: GameQuery) => {
 
   return useQuery<FetchResponse<Game>, Error>({
     queryKey: ['games', gameQuery],
-    queryFn: () => 
-      apiClient.get<FetchResponse<Game>>('/games', {params: params})
-      .then((res) => res.data)
+    queryFn: () => apiClient.getAll({params: params}),
+      
   })
 }
   

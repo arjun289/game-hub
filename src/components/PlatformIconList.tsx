@@ -1,4 +1,3 @@
-import { Platform } from "../hooks/useGames";
 import { HStack, Icon } from "@chakra-ui/react";
 import {
   FaWindows,
@@ -8,11 +7,11 @@ import {
   FaLinux,
   FaAndroid,
 } from "react-icons/fa";
-
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
+import { Platform } from "../hooks/usePlatform";
 
 const iconMap: { [key: string]: IconType } = {
   playstation: FaPlaystation,
